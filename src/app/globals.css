@@ -2,32 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* src/styles/globals.css */
+
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --radix-theme-primary: #E2DDFE;
+  --radix-theme-primary-hover: hsl(252, 78%, 55%);
+  --radix-theme-primary-active: hsl(252, 78%, 50%);
+  --radix-theme-secondary: rgba(255, 255, 255, 0.95);
+  --radix-theme-secondary-hover: hsl(210, 20%, 90%);
+  --radix-theme-secondary-active: hsl(210, 20%, 85%);
+  --radix-theme-tertiary: hsl(0, 0%, 100%);
+  --radix-theme-quaternary: hsl(0, 0%, 0%);
+
+  --radix-theme-font-size-1: 12px;
+  --radix-theme-font-size-2: 14px;
+  --radix-theme-font-size-3: 16px;
+  --radix-theme-font-size-4: 18px;
+  --radix-theme-font-size-5: 20px;
+  --radix-theme-font-size-6: 24px;
+
+  --radix-theme-font-weight-normal: 400;
+  --radix-theme-font-weight-medium: 500;
+  --radix-theme-font-weight-bold: 700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.radix-theme {
+  color: var(--radix-theme-quaternary);
+  font-size: var(--radix-theme-font-size-3);
+  font-weight: var(--radix-theme-font-weight-normal);
+  --heading-font-family: 'Untitled Sans', sans-serif;
+  --heading-font-size-adjust: 1.05;
+  --heading-font-style: normal;
+  --heading-leading-trim-start: 0.42em;
+  --heading-leading-trim-end: 0.38em;
+  --heading-letter-spacing: -0.01em;
+}
+
+.radix-text-field {
+  background-color: var(--radix-theme-secondary);
+  border: 1px solid var(--radix-theme-secondary-active);
+  border-radius: var(--radix-theme-radii-2);
+  padding: var(--radix-theme-space-2);
+  font-size: var(--radix-theme-font-size-3);
+  font-weight: var(--radix-theme-font-weight-normal);
+  color: var(--radix-theme-quaternary);
+}
+
+.radix-button {
+  background-color: var(--radix-theme-primary);
+  color: var(--radix-theme-tertiary);
+  border: none;
+  border-radius: var(--radix-theme-radii-2);
+  padding: var(--radix-theme-space-2) var(--radix-theme-space-4);
+  font-size: var(--radix-theme-font-size-3);
+  font-weight: var(--radix-theme-font-weight-medium);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.radix-button:hover {
+  background-color: var(--radix-theme-primary-hover);
+}
+
+.radix-button:active {
+  background-color: var(--radix-theme-primary-active);
+}
+.rt-Heading {
+  --leading-trim-start: var(--heading-leading-trim-start);
+  --leading-trim-end: var(--heading-leading-trim-end);
+  font-family: var(--heading-font-family);
+  font-style: var(--heading-font-style);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height);
+
+  :where(&) {
+    margin: 0;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  &:where([data-accent-color]) {
+    color: "#ffff";
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  &:where([data-accent-color].rt-high-contrast),
+  :where([data-accent-color]:not(.radix-themes)) &:where(.rt-high-contrast) {
+    color: "#ffff";
   }
 }
